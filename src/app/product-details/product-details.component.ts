@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Product, products } from '../products';
 import { CartService } from '../cart.service';
+import { RootObject } from '../productsApi';
+
 
 
 @Component({
@@ -11,7 +13,7 @@ import { CartService } from '../cart.service';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  product: Product | undefined;
+  product: RootObject | undefined;
 
 
   constructor(
@@ -24,10 +26,10 @@ export class ProductDetailsComponent implements OnInit {
     const productIdFromRoute = Number(routeParams.get('productId'));
   
     // Find the product that correspond with the id provided in route.
-    this.product = products.find(product => product.id === productIdFromRoute);
+    //this.product = products.find(product => product.id === productIdFromRoute);
   }
 
-  addToCart(product: Product) {
+  addToCart(product: RootObject) {
     this.cartService.addToCart(product);
     window.alert('Your product has been added to the cart!');
   }
